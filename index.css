@@ -1,0 +1,37 @@
+body {
+  background: linear-gradient(90deg, rgba(182, 182, 182, 1) 0%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 0%), url("./bulding\ 2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 50vw;
+
+}
+
+.git{
+  color:#F0F6FE ;
+  font-size: 20px;
+
+}
+
+
+
+.git:hover{ 
+  color:#F0F6FE ;
+  font-size: 22px;
+
+
+}
+
+#perfect {
+  margin-top: 15em;
+}
+.place {
+  color: #F0F6FE;
+}
+
+.btn, footer {
+  background-color: #252E56;
+}
+
+
+
