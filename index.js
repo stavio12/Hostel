@@ -7,8 +7,6 @@ const form = document.querySelector("#search");
 
 eventListener();
 
-
-
 function eventListener() {
   form.addEventListener("submit", search);
   budget.addEventListener("change", Budget);
@@ -35,6 +33,7 @@ function images() {
         document.querySelector(".card-group").innerHTML += `
           <div class="alert alert-danger mt-5 offset-sm-2 col-sm-12 col-md-12 mr-lg-5 offset-md-7 offset-lg-11" role="alert">
     <h4 class="text-center"> No search result found </h4>`;
+        document.querySelector("footer").innerHTML = "";
       } else {
         document.querySelector("#perfect").style.marginTop = "50px";
         document.querySelector(".card-group").innerHTML = "";
@@ -51,11 +50,11 @@ function images() {
           </div>
         </div>
         </div>`;
-        });
-        document.querySelector('footer').innerHTML +=`
+          document.querySelector("footer").innerHTML = `
         <h5><a class="git" href="https://github.com/stavio12" target="_blank" ><i class="fa fa-github text-white" aria-hidden="true"></i> Kobla Stavio</a></h5>
         <h6 >@2020 All rights reserved</h6>
-      `
+      `;
+        });
       }
     })
     .catch((error) => console.error(error));
@@ -68,4 +67,3 @@ function search(e) {
 
   form.reset();
 }
-
