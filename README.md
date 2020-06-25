@@ -1,2 +1,5 @@
 # Hostel finder
- To help students entering into university to search for hostels around
+ To help university students to search for hostels around their location
+
+ ## Under Construction Come back later
+
