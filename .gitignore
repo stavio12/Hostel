@@ -7,3 +7,6 @@ jquery-3.4.1.min.js
 style.css
 mobile-style.css
 bello.html
+
+# Local Netlify folder
+.netlify

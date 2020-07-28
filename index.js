@@ -1,4 +1,4 @@
-import { apiKey, authDomain, databaseURL, projectId, storageBucket, messagingSenderId, appId } from "./env.js";
+import { APIKEY, AUTHDOMAIN, DATABASEURL, PROJECTID, STORAGEBUCKET, MESSAGINGSENDERID, APPID } from "./env.js";
 
 const school = document.querySelector("#school");
 const budget = document.querySelector(".budget");
@@ -22,13 +22,13 @@ function hostels() {
   Budget();
 
   var firebaseConfig = {
-    apiKey: apiKey,
-    authDomain: authDomain,
-    databaseURL: databaseURL,
-    projectId: projectId,
-    storageBucket: storageBucket,
-    messagingSenderId: messagingSenderId,
-    appId: appId,
+    apiKey: APIKEY,
+    authDomain: AUTHDOMAIN,
+    databaseURL: DATABASEURL,
+    projectId: PROJECTID,
+    storageBucket: STORAGEBUCKET,
+    messagingSenderId: MESSAGINGSENDERID,
+    appId: APPID,
   };
   // Initialize Firebase
   if (!firebase.apps.length) {
