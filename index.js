@@ -4,6 +4,7 @@ const school = document.querySelector("#school");
 const budget = document.querySelector(".budget");
 const form = document.querySelector("#search");
 
+
 eventListener();
 
 function eventListener() {
