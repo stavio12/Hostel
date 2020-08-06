@@ -55,9 +55,19 @@
               <span class="input-group-text bg-white"><i class="fa fa-search" aria-hidden="true"></i>
               </span>
             </div>
-            <input type="text" id="school" aria-label="search" placeholder="Search for a university hostel...." class="form-control text-center">
-            <select class="custom-select budget offset-12"  id="inlineFormCustomSelectPref ">
-              <option selected>Budget Range</option>
+            <select class="custom-select school offset-12"  id=" inlineFormCustomSelectPref" required>
+              <option value="" selected>Search for a university hostel....</option>
+              <option value="accrapolly">Accra Technical University  </option>
+              <option value="upsa">University of Professional Studies, Accra (UPSA)</option>
+              <option value="legon">University of Ghana</option>
+              <option value="central">Central University </option>
+              <option value="gtuc">Ghana Technology University College</option>
+
+
+            </select> 
+            <!-- <input type="text" id="school" aria-label="search" placeholder="Search for a university hostel...." class="form-control text-center"> -->
+            <select class="custom-select budget offset-12"  id="inlineFormCustomSelectPref" required>
+              <option value="" selected>Budget Range</option>
               <option value="299">100 - 300</option>
               <option value="300">300 - 600</option>
               <option value="600">600 - </option>

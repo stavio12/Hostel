@@ -1,27 +1,31 @@
 import { APIKEY, AUTHDOMAIN, DATABASEURL, PROJECTID, STORAGEBUCKET, MESSAGINGSENDERID, APPID } from "./env.js";
 
-const school = document.querySelector("#school");
+const school = document.querySelector(".school");
 const budget = document.querySelector(".budget");
 const form = document.querySelector("#search");
-
 
 eventListener();
 
 function eventListener() {
   form.addEventListener("submit", search);
   budget.addEventListener("change", Budget);
+  school.addEventListener("change", School);
 }
 
 let budgetValue;
+
+let schoolvalue;
 
 function Budget(e) {
   budgetValue = budget.value;
 }
 
+function School(e) {
+  schoolvalue = school.value;
+}
+
 //Fetching data from firebase
 function hostels() {
-  Budget();
-
   var firebaseConfig = {
     apiKey: APIKEY,
     authDomain: AUTHDOMAIN,
@@ -37,21 +41,21 @@ function hostels() {
   }
   var db = firebase.database();
 
-  var university = db.ref();
+  var university = db.ref(schoolvalue);
 
   university.on("value", (snap) => {
     let images;
+
     snap.forEach((data) => {
       var dataKey = data.key;
       var dataInfo = data.val();
 
-      //Comparing user input to database key to get the right university
-      if (dataKey == school.value) {
+      //     //Comparing user input to database key to get the right university
+      if (dataKey == schoolvalue) {
         let price, images;
-
         document.querySelector("#perfect").style.marginTop = "50px";
         document.querySelector(".card-group").innerHTML = "";
-        dataInfo[school.value].map((info) => {
+        dataInfo.map((info) => {
           // querying  through hostels depending on prices
 
           if (info.budget <= 300 && budgetValue == 299) {
@@ -61,7 +65,7 @@ function hostels() {
               document.querySelector(".card-group").innerHTML += `
               <div class="col-12 col-md-6 col-lg-4 offset-sm-2 offset-md-0 p-3">
                 <div class="card" style="width: 20rem;">
-                <a href="#" data-toggle="modal" data-target="#staticBackdrop"> <img src="${info.previewImage}" class="card-img-top" alt="..."></a> 
+                <a href="#" data-toggle="modal" data-target="#staticBackdrop"> <img src="${info.previewImage}" class="card-img-top" alt="..."></a>
                 <div class="card-body">
                     <p class="card-text" >Name: <span class="font-weight-bolder"> ${info.hostelName} </span>
                     <span class="price float-right p-2 text-white rounded font-weight-bolder" style="background:#252E56 ;">GHC ${price}</span>
@@ -80,7 +84,7 @@ function hostels() {
                 <div class="carousel-item">
                 <img src="${info.images}" class="d-block w-100" alt="...">
                 </div>
-  
+
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -104,7 +108,7 @@ function hostels() {
               document.querySelector(".card-group").innerHTML += `
                         <div class="col-12 col-md-6 col-lg-4 offset-sm-2 offset-md-0 p-3">
                           <div class="card" style="width: 20rem;">
-                          <a href="#" data-toggle="modal" data-target="#staticBackdrop"> <img src="${info.previewImage}" class="card-img-top" alt="..."></a> 
+                          <a href="#" data-toggle="modal" data-target="#staticBackdrop"> <img src="${info.previewImage}" class="card-img-top" alt="..."></a>
                           <div class="card-body">
                               <p class="card-text" >Name: <span class="font-weight-bolder"> ${info.hostelName} </span>
                               <span class="price float-right p-2 text-white rounded font-weight-bolder" style="background:#252E56 ;">GHC ${price}</span>
@@ -123,7 +127,7 @@ function hostels() {
                           <div class="carousel-item">
                           <img src="${info.images}" class="d-block w-100" alt="...">
                           </div>
-            
+
                           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -147,7 +151,7 @@ function hostels() {
               document.querySelector(".card-group").innerHTML += `
               <div class="col-12 col-md-6 col-lg-4 offset-sm-2 offset-md-0 p-3">
                 <div class="card" style="width: 20rem;">
-                <a href="#" data-toggle="modal" data-target="#staticBackdrop"> <img src="${info.previewImage}" class="card-img-top" alt="..."></a> 
+                <a href="#" data-toggle="modal" data-target="#staticBackdrop"> <img src="${info.previewImage}" class="card-img-top" alt="..."></a>
                 <div class="card-body">
                     <p class="card-text" >Name: <span class="font-weight-bolder"> ${info.hostelName} </span>
                     <span class="price float-right p-2 text-white rounded font-weight-bolder" style="background:#252E56 ;">GHC ${price}</span>
@@ -166,7 +170,7 @@ function hostels() {
                 <div class="carousel-item">
                 <img src="${info.images}" class="d-block w-100" alt="...">
                 </div>
-  
+
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -185,13 +189,13 @@ function hostels() {
             }
           }
         });
-      } else {
-        document.querySelector(".card-group").innerHTML = "";
-        document.querySelector(".card-group").innerHTML += `
-              <div class="alert alert-danger mt-5 offset-sm-2 col-sm-12 col-md-12 mr-lg-5 offset-md-7 offset-lg-11" role="alert">
-        <h4 class="text-center"> No search result found </h4>`;
-        document.querySelector("footer").innerHTML = "";
       }
+
+      // document.querySelector(".card-group").innerHTML = "";
+      // document.querySelector(".card-group").innerHTML += `
+      //             <div class="alert alert-danger mt-5 offset-sm-2 col-sm-12 col-md-12 mr-lg-5 offset-md-7 offset-lg-11" role="alert">
+      //       <h4 class="text-center"> No search result found </h4>`;
+      // document.querySelector("footer").innerHTML = "";
     });
   }),
     (error) => {
@@ -201,6 +205,8 @@ function hostels() {
 
 function search(e) {
   e.preventDefault();
+  Budget();
+  School();
 
   hostels();
 
