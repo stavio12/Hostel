@@ -2,10 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Hostel = require("../controllers/hostelControllers");
 
-router.param("id", Hostel.checkID);
+router.route("/").get(Hostel.getAllHostels).post(Hostel.createHostel);
 
-router.route("/").get(Hostel.getAllHostels);
-
-router.route("/:id").get(Hostel.getHostels);
+router.route("/:id").get(Hostel.getHostels).patch(Hostel.updateHostel).delete(Hostel.deleteHostel);
 
 module.exports = router;
