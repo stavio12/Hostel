@@ -1,10 +1,25 @@
 const fs = require("fs");
 const AppError = require("./../util/appError");
+const APIFeatures = require("./../util/APIFeatures");
 const catchAsync = require("./../util/catchAsync");
 const Hostel = require("./../model/hostelModel");
 
+//Middle ware for searching for cheapsest and expensive hostels
+exports.cheapestHostels = catchAsync(async (req, res, next) => {
+  req.query.sort = "-rating,price";
+
+  next();
+});
+
+exports.expensiveHostels = catchAsync(async (req, res, next) => {
+  req.query.sort = "-price,rating";
+
+  next();
+});
+
 exports.getAllHostels = catchAsync(async (req, res) => {
-  const allHostels = await Hostel.find();
+  const features = new APIFeatures(Hostel.find(), req.query).filter().sort().limitPage().pagination();
+  const allHostels = await features.queryHostel;
   res.send({ status: 200, results: allHostels.length, data: allHostels });
 });
 
