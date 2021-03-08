@@ -1,0 +1,46 @@
+{
+  "name": "hostel-tracer-frontend",
+  "version": "1.0.0",
+  "description": "To help university students to search for hostels around their location",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stavio12/Hostel-Tracer.git"
+  },
+  "author": "kobla-stavio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stavio12/Hostel-Tracer/issues"
+  },
+  "homepage": "https://github.com/stavio12/Hostel-Tracer#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.1.0",
+    "bootstrap": "^4.5.3",
+    "css-loader": "^3.6.0",
+    "html-webpack-plugin": "^4.3.0",
+    "http-proxy-middleware": "^1.0.5",
+    "react-bootstrap": "^1.4.0",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^6.0.0",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-merge": "^5.7.3"
+  }
+}

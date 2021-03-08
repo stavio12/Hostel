@@ -3,6 +3,8 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const cors = require("cors");
+
 const app = express();
 
 const AppError = require("./util/appError");
@@ -12,6 +14,7 @@ app.use(morgan("dev"));
 dotenv.config({ path: "./config.env" });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors({ origin: true, credentials: true }));
 
 if (process.env.NODE_ENV === "development") {
   mongoose.connect(process.env.DATABASE_LOCAL, {

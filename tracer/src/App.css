@@ -4,34 +4,27 @@ body {
   background-attachment: fixed;
   background-size: cover;
   height: 50vw;
-
 }
 
-.git{
-  color:#F0F6FE ;
+.git {
+  color: #f0f6fe;
   font-size: 20px;
-
 }
 
-
-
-.git:hover{ 
-  color:#F0F6FE ;
+.git:hover {
+  color: #f0f6fe;
   font-size: 22px;
-
-
 }
 
 #perfect {
   margin-top: 15em;
 }
 .place {
-  color: #F0F6FE;
+  color: #f0f6fe;
 }
 
-.btn, footer {
-  background-color: #252E56;
+.btn,
+footer,
+.price {
+  background-color: #252e56;
 }
-
-
-
