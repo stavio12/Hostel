@@ -1,31 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Spinner } from "react-bootstrap";
 import { useTypedSelector } from "../../hook/useTypeSelector";
 import { useActions } from "../../hook/useActions"; // a hook that does the prvious thing for us.
+import HostelCards from "./HosteCards";
 
 const Home: React.FC = () => {
   const [hostel, setHostel] = useState("react");
   const [price, setPrice] = useState("default");
-  const { findHostel } = useActions(); // give us all the datas we have from state
-  // useEffect(() => {
-  //   const FetchData = async () => {
-  //     try {
-  //       const hostelsData = await axios({
-  //         method: "get",
-  //         url: "http://localhost:4000/api/hostel",
-  //       }).then(async (response) => {
-  //         setHostelData(response.data.data);
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
+  const { findHostel, getHostel } = useActions(); // give us all the datas we have from state
 
-  //     }
-  //   };
-  //   FetchData();
-  // }, []);
+  useEffect(() => {
+    getHostel();
+  }, []);
 
-  // console.log(HostelData);\
-  // const { data, error, loading } = useTypedSelector((state: any) => state.hostel);
-  // console.log(data, error, loading);
+  const { data, error, loading } = useTypedSelector((state: any) => state.hostel);
+  // console.log(data);
   const search = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -71,8 +60,15 @@ const Home: React.FC = () => {
           </form>
         </div>
       </div>
-
-      {/* <HostelCards /> */}
+      <div className="text-center">
+        {error && <h2>{error}</h2>}
+        {loading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}{" "}
+      </div>
+      {!error && !loading && data && <HostelCards />}{" "}
     </>
   );
 };
