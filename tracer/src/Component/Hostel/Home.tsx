@@ -3,10 +3,10 @@ import { Spinner } from "react-bootstrap";
 import { useTypedSelector } from "../../hook/useTypeSelector";
 import { useActions } from "../../hook/useActions"; // a hook that does the prvious thing for us.
 import HostelCards from "./HosteCards";
-
+import HostelFilters from "./HostelFilters";
 const Home: React.FC = () => {
-  const [hostel, setHostel] = useState("react");
-  const [price, setPrice] = useState("default");
+  const [Uni, setUni] = useState("");
+  const [price, setPrice] = useState("");
   const { findHostel, getHostel } = useActions(); // give us all the datas we have from state
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   const search = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    findHostel(hostel);
+    findHostel(Uni, price);
   };
   return (
     <>
@@ -36,13 +36,13 @@ const Home: React.FC = () => {
                       <i className="fa fa-search" aria-hidden="true"></i>
                     </span>
                   </div>
-                  <select onChange={(e) => setHostel(e.target.value)} value={hostel} className="custom-select school offset-12" id=" inlineFormCustomSelectPref" required>
+                  <select onChange={(e) => setUni(e.target.value)} value={Uni} className="custom-select school offset-12" id=" inlineFormCustomSelectPref" required>
                     <option value="default">Search for a university hostel....</option>
-                    <option value="accrapolly">Accra Technical University </option>
-                    <option value="upsa">University of Professional Studies, Accra (UPSA)</option>
+                    <option value="APoly">Accra Technical University </option>
+                    <option value="UPSA">University of Professional Studies, Accra (UPSA)</option>
                     <option value="legon">University of Ghana</option>
-                    <option value="central">Central University </option>
-                    <option value="gtuc">Ghana Technology University College</option>
+                    <option value="Central">Central University </option>
+                    <option value="GTUC">Ghana Technology University College</option>
                   </select>
                   {/* <!-- <input type="text" id="school" aria-label="search" placeholder="Search for a university hostel...." className="form-control text-center"> --> */}
                   <select onChange={(e) => setPrice(e.target.value)} value={price} className="custom-select budget offset-12" id="inlineFormCustomSelectPref" required>
@@ -60,6 +60,7 @@ const Home: React.FC = () => {
           </form>
         </div>
       </div>
+      {/* <HostelFilters/> */}
       <div className="text-center">
         {error && <h2>{error}</h2>}
         {loading && (

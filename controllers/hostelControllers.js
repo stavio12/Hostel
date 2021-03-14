@@ -1,8 +1,8 @@
 const fs = require("fs");
-const AppError = require("./../util/appError");
-const APIFeatures = require("./../util/APIFeatures");
-const catchAsync = require("./../util/catchAsync");
-const Hostel = require("./../model/hostelModel");
+const AppError = require("../../util/appError");
+const APIFeatures = require("../util/ApiFeatures");
+const catchAsync = require("../../util/catchAsync");
+const Hostel = require("../model/hostelModel");
 
 //Middle ware for searching for cheapsest and expensive hostels
 exports.cheapestHostels = catchAsync(async (req, res, next) => {
