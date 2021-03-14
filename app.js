@@ -42,6 +42,7 @@ app.all("*", (req, res, next) => {
 });
 app.use(GlobalError);
 
-app.listen((PORT = 4000), () => {
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
   console.log("Sever running " + PORT);
 });
