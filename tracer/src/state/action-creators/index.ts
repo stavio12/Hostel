@@ -14,12 +14,12 @@ export const getHostel = () => {
     });
 
     try {
-      const { data } = await axios.get("https://hosteltracerapi.herokuapp.com/");
+      const { data } = await axios.get("https://hosteltracerapi.herokuapp.com/api/hostel/");
+      console.log(data);
 
       const hostel = data.data.map((result: any) => {
         return result;
       });
-      console.log(data);
       dispatch({
         type: ActionType.HOSTEL_SUCESS,
         payload: hostel,
@@ -43,7 +43,7 @@ export const findHostel = (uni: string, budget: string) => {
     });
     console.log(uni, budget);
     try {
-      const { data } = await axios.get(`https://hosteltracerapi.herokuapp.com/?price[lte]=${budget}&university=${uni}&sort=price`);
+      const { data } = await axios.get(`https://hosteltracerapi.herokuapp.com/api/hostel?price[lte]=${budget}&university=${uni}&sort=price`);
       console.log(data);
 
       const hostel = data.data.map((result: any) => {

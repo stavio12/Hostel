@@ -16,4 +16,4 @@ const hostel = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now(), select: false },
 });
 
-module.exports = mongoose.model("hostels", hostel);
+module.exports = mongoose.model("hostel", hostel);
