@@ -44,16 +44,21 @@ export const findHostel = (uni: string, budget: string) => {
     console.log(uni, budget);
     try {
       const { data } = await axios.get(`https://hosteltracerapi.herokuapp.com/api/hostel?price[lte]=${budget}&university=${uni}&sort=price`);
-      console.log(data);
 
       const hostel = data.data.map((result: any) => {
         return result;
       });
-
-      dispatch({
-        type: ActionType.HOSTEL_SUCESS,
-        payload: hostel,
-      });
+      if (hostel.length === 0) {
+        dispatch({
+          type: ActionType.ERROR,
+          payload: "No Results Found!",
+        });
+      } else {
+        dispatch({
+          type: ActionType.HOSTEL_SUCESS,
+          payload: hostel,
+        });
+      }
     } catch (error) {
       console.log(error);
       dispatch({

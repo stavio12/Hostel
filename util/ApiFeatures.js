@@ -47,7 +47,6 @@ class APIFeatures {
     const skipPages = (page - 1) * limitPage; //eg: if page input = 3 do (3-1 = 2) * 10... Skip 2 pages and land me to page 3
 
     this.queryHostel = this.queryHostel.skip(skipPages).limit(limitPage);
-    console.log(this.queryHostel);
     return this;
   }
 }

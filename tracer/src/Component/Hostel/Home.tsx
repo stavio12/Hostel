@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import { useTypedSelector } from "../../hook/useTypeSelector";
 import { useActions } from "../../hook/useActions"; // a hook that does the prvious thing for us.
 import HostelCards from "./HosteCards";
@@ -14,7 +14,6 @@ const Home: React.FC = () => {
   }, []);
 
   const { data, error, loading } = useTypedSelector((state: any) => state.hostel);
-  // console.log(data);
   const search = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -39,10 +38,10 @@ const Home: React.FC = () => {
                   <select onChange={(e) => setUni(e.target.value)} value={Uni} className="custom-select school offset-12" id=" inlineFormCustomSelectPref" required>
                     <option value="default">Search for a university hostel....</option>
                     <option value="APoly">Accra Technical University </option>
-                    <option value="UPSA">University of Professional Studies, Accra (UPSA)</option>
+                    <option value="upsa">University of Professional Studies, Accra (UPSA)</option>
                     <option value="legon">University of Ghana</option>
-                    <option value="Central">Central University </option>
-                    <option value="GTUC">Ghana Technology University College</option>
+                    <option value="central">Central University </option>
+                    <option value="gtuc">Ghana Technology University College</option>
                   </select>
                   {/* <!-- <input type="text" id="school" aria-label="search" placeholder="Search for a university hostel...." className="form-control text-center"> --> */}
                   <select onChange={(e) => setPrice(e.target.value)} value={price} className="custom-select budget offset-12" id="inlineFormCustomSelectPref" required>
@@ -61,8 +60,8 @@ const Home: React.FC = () => {
         </div>
       </div>
       {/* <HostelFilters/> */}
-      <div className="text-center">
-        {error && <h2>{error}</h2>}
+      <div className="text-center container">
+        {error && <Alert variant="danger">{error}</Alert>}
         {loading && (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
