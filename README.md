@@ -6,18 +6,18 @@ A website to help students entering into university to search for hostels near t
 
 # Routes
 
-## Get
+### Get
 /sortBy-cheapest-hostels
 /sortBy-expensive-hostels
 /:id
 
 
-## Post
+### Post
 /
 
-# Patch
+### Patch
 /:id
 
-# Delete
+### Delete
 /:id
 
